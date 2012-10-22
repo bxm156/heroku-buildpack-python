@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+
+# This script serves as the Pylibmc build step of the
+# [**Python Buildpack**](https://github.com/heroku/heroku-buildpack-python) 
+# compiler. 
+# 
+# A [buildpack](http://devcenter.heroku.com/articles/buildpacks) is an 
+# adapter between a Python application and Heroku's runtime.
+#
+# This script is invoked by [`bin/compile`](/).
+
+# The location of the pre-compiled libmemcached binary.
+VENDORED_SASL="http://vulcan-servicepad.herokuapp.com/output/f563c0f2-b45a-4c5e-8756-8de419c9f25a"
+
+# If pylibmc exists within requirements, use vendored libmemcached.
+if (grep -Fiq "pylibmc" requirements.txt) then
+  echo "-----> Noticed pylibmc. Bootstrapping libsasl."
+  cd .heroku
+
+  if [ -d "vendor/lib/sasl2" ]; then
+    export LIBSASL=$(pwd)/vendor
+  else
+    # Download and extract libmemcached into target vendor directory.
+    curl -s -L -o tmp-libsasl.tar.gz $VENDORED_MEMCACHED
+    tar -zxvf tmp-libsasl.tar.gz > /dev/null
+    rm tmp-libsasl.tar.gz
+    export LIBSASL=$(pwd)/vendor
+  fi
+
+  export LIBSASL=$(pwd)/vendor
+  cd ..
+fi
+
+
+
