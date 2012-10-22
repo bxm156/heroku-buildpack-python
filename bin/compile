@@ -195,9 +195,6 @@ set -e
 # See [`bin/steps/pylibmc`](pylibmc.html).
 source $BIN_DIR/steps/pylibmc
 
-#Python-LDAP support.
-source $BIN_DIR/steps/python-ldap
-
 # Activate the Virtualenv.
 puts-step "Activating virtualenv"
 source $VIRTUALENV_LOC/bin/activate
