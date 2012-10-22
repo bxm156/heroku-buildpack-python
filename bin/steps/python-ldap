@@ -21,7 +21,7 @@ if (grep -Fiq "python-ldap" requirements.txt) then
   fi
   # Download and extract libmemcached into target vendor directory.
   curl -s -L -o tmp-libsasl.tar.gz $VENDORED_SASL
-  tar -C /app/tmp/repo.git/.cache -zxvf tmp-libsasl.tar.gz > /dev/null
+  tar -C /app/tmp/repo.git/.cache -zxvf tmp-libsasl.tar.gz
   cd ..
 fi
 
