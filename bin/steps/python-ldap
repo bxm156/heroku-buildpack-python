@@ -21,7 +21,7 @@ if (grep -Fiq "python-ldap" requirements.txt) then
     export LIBSASL=$(pwd)/vendor
   else
     # Download and extract libmemcached into target vendor directory.
-    curl -s -L -o tmp-libsasl.tar.gz $VENDORED_MEMCACHED
+    curl -s -L -o tmp-libsasl.tar.gz $VENDORED_SASL
     tar -zxvf tmp-libsasl.tar.gz > /dev/null
     rm tmp-libsasl.tar.gz
     export LIBSASL=$(pwd)/vendor
