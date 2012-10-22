@@ -195,8 +195,7 @@ set -e
 # See [`bin/steps/pylibmc`](pylibmc.html).
 source $BIN_DIR/steps/pylibmc
 
-echo "CACHE_DIR:"
-echo $CACHE_DIR
+#Python-LDAP support
 source $BIN_DIR/steps/python-ldap
 
 # Activate the Virtualenv.
