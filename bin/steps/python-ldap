@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+# This script serves to install the libraries needed for compiling python-ldap 
+# 
+# A [buildpack](http://devcenter.heroku.com/articles/buildpacks) is an 
+# adapter between a Python application and Heroku's runtime.
+#
+# This script is invoked by [`bin/compile`](/).
+
+# If pylibmc exists within requirements, use vendored libmemcached.
+if (grep -Fiq "python-ldap" requirements.txt) then
+  echo "-----> Noticed python-ldap. Installing dependencies"
+  cd .heroku
+  apt-get -y install libsasl2-dev
+  cd ..
+fi
+
+
+
