@@ -13,8 +13,8 @@
 VENDORED_SASL="http://vulcan-servicepad.herokuapp.com/output/f563c0f2-b45a-4c5e-8756-8de419c9f25a"
 
 # If pylibmc exists within requirements, use vendored libmemcached.
-if (grep -Fiq "pylibmc" requirements.txt) then
-  echo "-----> Noticed pylibmc. Bootstrapping libsasl."
+if (grep -Fiq "python-ldap" requirements.txt) then
+  echo "-----> Noticed python-ldap. Bootstrapping libsasl."
   cd .heroku
 
   if [ -d "vendor/lib/sasl2" ]; then
